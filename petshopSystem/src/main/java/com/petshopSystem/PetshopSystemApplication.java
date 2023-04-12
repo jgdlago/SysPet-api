@@ -1,4 +1,4 @@
-package com.petshopSystem.petshopSystem;
+package com.petshopSystem;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

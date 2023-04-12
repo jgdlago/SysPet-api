@@ -1,4 +1,4 @@
-package com.petshopSystem.petshopSystem.model.entities;
+package com.petshopSystem.entities;
 
 import java.time.LocalDate;
 import jakarta.persistence.*;
