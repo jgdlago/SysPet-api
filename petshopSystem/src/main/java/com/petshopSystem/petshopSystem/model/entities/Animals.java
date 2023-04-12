@@ -19,10 +19,9 @@ public class Animals {
     @Column(nullable = false, length = 150)
     private String race;
     
-    @Id
     @ManyToOne
     @JoinColumn(nullable = false)
-    private Long idCliente;
+    private Customers customer;
 
 	public Long getIdAnimal() {
 		return idAnimal;
@@ -54,14 +53,6 @@ public class Animals {
 
 	public void setRace(String race) {
 		this.race = race;
-	}
-
-	public Long getIdCliente() {
-		return idCliente;
-	}
-
-	public void setIdCliente(Long idCliente) {
-		this.idCliente = idCliente;
 	}
     
 }

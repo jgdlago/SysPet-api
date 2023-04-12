@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "service")
-public class Service {
+public class Services {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,11 +22,10 @@ public class Service {
 	
 	@Column(nullable = false)
 	private String serviceType;
-	
-	@Id
+
 	@ManyToOne
 	@JoinColumn(nullable = false)
-	private Long idPetshop;
+	private Petshop petshop;
 
 	public Long getIdService() {
 		return idService;
@@ -66,13 +65,5 @@ public class Service {
 
 	public void setServiceType(String serviceType) {
 		this.serviceType = serviceType;
-	}
-
-	public Long getIdPetshop() {
-		return idPetshop;
-	}
-
-	public void setIdPetshop(Long idPetshop) {
-		this.idPetshop = idPetshop;
 	}
 }

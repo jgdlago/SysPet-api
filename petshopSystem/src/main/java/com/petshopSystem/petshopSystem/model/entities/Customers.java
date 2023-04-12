@@ -20,10 +20,9 @@ public class Customers {
     @Column(nullable = true, length = 200)
     private String email;
     
-    @Id
     @ManyToOne
     @JoinColumn(nullable = false)
-    private long idPetshop;
+    private Petshop petshop;
 
 	public long getIdCliente() {
 		return idCustomer;
@@ -55,14 +54,6 @@ public class Customers {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public long getIdPetshop() {
-		return idPetshop;
-	}
-
-	public void setIdPetshop(long idPetshop) {
-		this.idPetshop = idPetshop;
 	}
     
 }

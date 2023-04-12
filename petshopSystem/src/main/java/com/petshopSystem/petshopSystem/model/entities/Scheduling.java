@@ -11,47 +11,20 @@ public class Scheduling {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idscheduling;
 	
-	@Id
 	@ManyToOne
 	@JoinColumn(nullable = false)
-	private Long idService;
+	private Services service;
 	
-	@Id
 	@ManyToOne
 	@JoinColumn(nullable = false)
-	private Long idCustomer;
+	private Customers customer;
 	
-	@Id
 	@ManyToOne
 	@JoinColumn(nullable = false)
-	private Long idPetshop;
+	private Petshop petshop;
 	
 	@Column(nullable = false, length = 10)
 	private LocalDate date;
-
-	public Long getIdService() {
-		return idService;
-	}
-
-	public void setIdService(long idService) {
-		this.idService = idService;
-	}
-
-	public Long getIdCustomer() {
-		return idCustomer;
-	}
-
-	public void setIdCustomer(long idCustomer) {
-		this.idCustomer = idCustomer;
-	}
-
-	public Long getIdPetshop() {
-		return idPetshop;
-	}
-
-	public void setIdPetshop(long idPetshop) {
-		this.idPetshop = idPetshop;
-	}
 
 	public LocalDate getDate() {
 		return date;
