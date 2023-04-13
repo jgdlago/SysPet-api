@@ -29,7 +29,33 @@ public class PetshopService {
         if(petshop.isPresent()) {
         	return ResponseEntity.status(HttpStatus.OK).body(petshop);
         } else {
-        	return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nenhum petshop encontrado" + id);
+        	return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nenhum petshop encontrado com ID: " + id);
         }
     }
+    
+    public ResponseEntity<Object> updatePetshop(Long id, Petshop petshop) {
+        Optional<Petshop> petshopOptional = petShopRepository.findById(id);
+
+        if(petshopOptional.isPresent()) {
+            Petshop existingPetshop = petshopOptional.get();
+            existingPetshop.setName(petshop.getName());
+            existingPetshop.setAddress(petshop.getAddress());
+            existingPetshop.setPhone(petshop.getPhone());
+            Petshop updatedPetshop = petShopRepository.save(existingPetshop);
+            return ResponseEntity.status(HttpStatus.OK).body(updatedPetshop);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nenhum petshop encontrado com o ID: " + id);
+        }
+    }
+    
+    public ResponseEntity<Object> deletePetshop(Long id) {
+        Optional<Petshop> petshop = petShopRepository.findById(id);
+        if(petshop.isPresent()) {
+            petShopRepository.deleteById(id);
+            return ResponseEntity.status(HttpStatus.OK).body("Petshop excluído com sucesso!");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nenhum petshop encontrado com o ID " + id);
+        }
+    }
+    
 }
