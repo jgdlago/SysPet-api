@@ -33,6 +33,15 @@ public class PetshopService {
         }
     }
     
+    public ResponseEntity<?> getPetshopByName(String name) {
+        List<Petshop> petshops = petShopRepository.findByNameContainingIgnoreCase(name);
+        if (petshops.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nenhum petshop encontrado");
+        } else {
+            return ResponseEntity.ok(petshops);
+        }
+    }
+    
     public ResponseEntity<Object> updatePetshop(Long id, Petshop petshop) {
         Optional<Petshop> petshopOptional = petShopRepository.findById(id);
 

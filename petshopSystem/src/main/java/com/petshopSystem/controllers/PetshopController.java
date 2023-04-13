@@ -32,18 +32,23 @@ public class PetshopController {
     public Petshop addPetshop(@RequestBody Petshop petshop) {
     	return petshopService.addPetshop(petshop);
     }
+    
+    @GetMapping("/name/{name}")
+    public ResponseEntity<?> getPetshopByName(@PathVariable String name) {
+    	return petshopService.getPetshopByName(name);
+    }
 
-    @GetMapping("/{id}")
+    @GetMapping("/id/{id}")
     public ResponseEntity<Object> getPetshopById(@PathVariable Long id) {
         return petshopService.getPetshopById(id);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/id/{id}")
     public ResponseEntity<Object> updatePetshop(@PathVariable Long id, @RequestBody Petshop petshop) {
         return petshopService.updatePetshop(id, petshop);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/id/{id}")
     public void deletePetshop(@PathVariable Long id) {
         petshopService.deletePetshop(id);
     }
