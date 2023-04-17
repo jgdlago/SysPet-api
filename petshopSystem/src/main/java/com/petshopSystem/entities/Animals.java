@@ -20,7 +20,7 @@ public class Animals {
     private String race;
     
     @ManyToOne
-    @JoinColumn(nullable = false)
+    @JoinColumn(nullable = true) //(nullable = false) 
     private Customers customer;
 
 	public Long getIdAnimal() {
