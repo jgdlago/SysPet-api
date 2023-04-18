@@ -24,11 +24,11 @@ public class Customers {
     @JoinColumn(nullable = false)
     private Petshop petshop;
 
-	public long getIdCliente() {
+	public Long getIdCustomer() {
 		return idCustomer;
 	}
 
-	public void setIdCliente(long idCustomer) {
+	public void setIdCustomer(Long idCustomer) {
 		this.idCustomer = idCustomer;
 	}
 
@@ -54,6 +54,14 @@ public class Customers {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public Petshop getPetshop() {
+		return petshop;
+	}
+
+	public void setPetshop(Petshop petshop) {
+		this.petshop = petshop;
 	}
     
 }
