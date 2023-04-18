@@ -24,21 +24,21 @@ public class PetshopService {
         return petShopRepository.save(petshop);
     }
     
-    public ResponseEntity<Object> getPetshopById(Long id) {
-        Optional<Petshop> petshop = petShopRepository.findById(id);
-        if(petshop.isPresent()) {
-        	return ResponseEntity.status(HttpStatus.OK).body(petshop);
-        } else {
-        	return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nenhum petshop encontrado com ID: " + id);
-        }
-    }
-    
     public ResponseEntity<?> getPetshopByName(String name) {
         List<Petshop> petshops = petShopRepository.findByNameContainingIgnoreCase(name);
         if (petshops.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nenhum petshop encontrado");
         } else {
             return ResponseEntity.ok(petshops);
+        }
+    }
+    
+    public ResponseEntity<Object> getPetshopById(Long id) {
+        Optional<Petshop> petshop = petShopRepository.findById(id);
+        if(petshop.isPresent()) {
+        	return ResponseEntity.status(HttpStatus.OK).body(petshop);
+        } else {
+        	return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nenhum petshop encontrado com ID: " + id);
         }
     }
     
