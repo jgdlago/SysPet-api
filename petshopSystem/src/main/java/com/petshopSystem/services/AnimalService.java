@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
 import com.petshopSystem.entities.Animals;
 import com.petshopSystem.repositories.AnimalsRepository;
 
@@ -56,5 +57,15 @@ public class AnimalService {
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nenhum Animal encontrado com o ID: " + id);
         }
+    }
+    
+    public ResponseEntity<Object> deleteAnimal(Long id) {
+    	Optional<Animals> animal = animalsRepository.findById(id);
+    	if(animal.isPresent()) {
+    		animalsRepository.deleteById(id);
+    		return ResponseEntity.status(HttpStatus.OK).body("Animal excluido com sucesso!");
+    	} else {
+    		return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nenhum animal encontrado com o id" + id);
+    	}
     }
 }
