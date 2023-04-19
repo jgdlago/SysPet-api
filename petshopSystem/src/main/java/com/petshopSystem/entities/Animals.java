@@ -20,8 +20,16 @@ public class Animals {
     private String race;
     
     @ManyToOne
-    @JoinColumn(nullable = true) //(nullable = false) 
+    @JoinColumn(nullable = false)
     private Customers customer;
+
+	public Customers getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customers customer) {
+		this.customer = customer;
+	}
 
 	public Long getIdAnimal() {
 		return idAnimal;

@@ -12,8 +12,12 @@ public class Scheduling {
 	private Long idscheduling;
 	
 	@ManyToOne
-	@JoinColumn(nullable = false)
+	@JoinColumn(nullable = true)//@JoinColumn(nullable = false)
 	private Services service;
+	
+	@ManyToOne
+	@JoinColumn(nullable = false)
+	private Animals animal;
 	
 	@ManyToOne
 	@JoinColumn(nullable = false)
@@ -26,12 +30,52 @@ public class Scheduling {
 	@Column(nullable = false, length = 10)
 	private LocalDate date;
 
+	public Long getIdscheduling() {
+		return idscheduling;
+	}
+
+	public void setIdscheduling(Long idscheduling) {
+		this.idscheduling = idscheduling;
+	}
+
+	public Services getService() {
+		return service;
+	}
+
+	public void setService(Services service) {
+		this.service = service;
+	}
+
+	public Customers getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customers customer) {
+		this.customer = customer;
+	}
+
+	public Petshop getPetshop() {
+		return petshop;
+	}
+
+	public void setPetshop(Petshop petshop) {
+		this.petshop = petshop;
+	}
+
 	public LocalDate getDate() {
 		return date;
 	}
 
 	public void setDate(LocalDate date) {
 		this.date = date;
+	}
+	
+	public Animals getAnimal() {
+		return animal;
+	}
+
+	public void setAnimal(Animals animal) {
+		this.animal = animal;
 	}
 	
 	
