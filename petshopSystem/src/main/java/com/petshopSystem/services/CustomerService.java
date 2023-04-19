@@ -1,6 +1,7 @@
 package com.petshopSystem.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -33,5 +34,39 @@ public class CustomerService {
             return ResponseEntity.ok(customer);
         }
 	}
+	
+	public ResponseEntity<?> getCustomerById(Long id) {
+		Optional<Customers> customer = customerRepository.findById(id);
+		if (customer.isEmpty()) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nenhum cliente encontrado com o id" + id);
+		} else {
+			return ResponseEntity.ok(customer);
+		}
+	}
+	
+    public ResponseEntity<Object> updateCustomer(Long id, Customers customer) {
+        Optional<Customers> customerOptional = customerRepository.findById(id);
+
+        if(customerOptional.isPresent()) {
+            Customers existingCustomer = customerOptional.get();
+            existingCustomer.setName(customer.getName());
+            existingCustomer.setPhone(customer.getPhone());
+            existingCustomer.setEmail(customer.getEmail());
+            Customers updatedCustomer = customerRepository.save(existingCustomer);
+            return ResponseEntity.status(HttpStatus.OK).body(updatedCustomer);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nenhum cliente encontrado com o ID: " + id);
+        }
+    }
+    
+    public ResponseEntity<Object> deleteCustomer(Long id) {
+        Optional<Customers> customer = customerRepository.findById(id);
+        if(customer.isPresent()) {
+        	customerRepository.deleteById(id);
+            return ResponseEntity.status(HttpStatus.OK).body("Cliente excluído com sucesso!");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nenhum cliente encontrado com o ID " + id);
+        }
+    }
 
 }

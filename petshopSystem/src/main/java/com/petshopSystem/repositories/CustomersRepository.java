@@ -10,7 +10,7 @@ import com.petshopSystem.entities.Customers;
 
 public interface CustomersRepository extends JpaRepository<Customers, Long>{
 	
-	@Query("SELECT p FROM Petshop p WHERE lower(p.name) LIKE %:name%")
+	@Query("SELECT p FROM Customers p WHERE lower(p.name) LIKE %:name%")
 	List<Customers> findByNameContainingIgnoreCase(@Param("name") String name);
 
 }
