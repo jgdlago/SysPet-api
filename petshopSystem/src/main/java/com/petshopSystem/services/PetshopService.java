@@ -26,6 +26,7 @@ public class PetshopService {
     
     public ResponseEntity<?> getPetshopByName(String name) {
         List<Petshop> petshops = petShopRepository.findByNameContainingIgnoreCase(name);
+        
         if (petshops.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nenhum petshop encontrado");
         } else {
@@ -35,6 +36,7 @@ public class PetshopService {
     
     public ResponseEntity<Object> getPetshopById(Long id) {
         Optional<Petshop> petshop = petShopRepository.findById(id);
+        
         if(petshop.isPresent()) {
         	return ResponseEntity.status(HttpStatus.OK).body(petshop);
         } else {
@@ -59,6 +61,7 @@ public class PetshopService {
     
     public ResponseEntity<Object> deletePetshop(Long id) {
         Optional<Petshop> petshop = petShopRepository.findById(id);
+        
         if(petshop.isPresent()) {
             petShopRepository.deleteById(id);
             return ResponseEntity.status(HttpStatus.OK).body("Petshop excluído com sucesso!");

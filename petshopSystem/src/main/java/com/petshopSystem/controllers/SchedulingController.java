@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,8 +24,8 @@ public class SchedulingController {
 	private SchedulingService schedullingService;
 	
     @GetMapping
-    public List<Scheduling> getAllServices() {
-        return schedullingService.getAllServices();
+    public List<Scheduling> getAllScheduling() {
+        return schedullingService.getAllScheduling();
     }
     
     @PostMapping
@@ -36,5 +37,16 @@ public class SchedulingController {
     public ResponseEntity<?> getSchedulingByDate(@PathVariable LocalDate date) {
     	return schedullingService.getSchedulingByDate(date);
     }
+    
+    @GetMapping("/id/{id}")
+    public ResponseEntity<Object> getSchedulingByid(@PathVariable Long id) {
+        return schedullingService.getSchedulingByid(id);
+    }
+    
+    @PutMapping("/id/{id}")
+    public ResponseEntity<Object> updateScheduling(@PathVariable Long id, @RequestBody Scheduling scheduling) {
+        return schedullingService.updateScheduling(id, scheduling);
+    }
+    
     
 }
