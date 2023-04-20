@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.petshopSystem.repositories.SchedulingRepository;
 import com.petshopSystem.entities.Scheduling;
@@ -22,7 +23,13 @@ public class SchedulingService {
 	}
 	
 	public Scheduling addScheduling(Scheduling scheduling) {
-		return schedulingRepository.save(scheduling);
+	    LocalDate currentDate = LocalDate.now();
+
+	    if (scheduling.getDate().isAfter(currentDate)) {
+	        return schedulingRepository.save(scheduling);
+	    } else {
+	    	throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Data inválida para agendamento");
+	    }
 	}
 	
 	public ResponseEntity<?> getSchedulingByDate(LocalDate date) {

@@ -16,7 +16,7 @@ import com.petshopSystem.services.SchedulingService;
 import com.petshopSystem.entities.Scheduling;
 
 @RestController
-@RequestMapping("/schedulling")
+@RequestMapping("/scheduling")
 public class SchedulingController {
 
 	@Autowired
