@@ -60,12 +60,22 @@ public class SchedulingService {
         if(schedulingList.isPresent()) {
             Scheduling existingScheduling = schedulingList.get();
             existingScheduling.setAnimal(scheduling.getAnimal());
-            existingScheduling.setCustomer(scheduling.getCustomer());
             existingScheduling.setDate(scheduling.getDate());
             Scheduling updatedScheduling = schedulingRepository.save(existingScheduling);
             return ResponseEntity.status(HttpStatus.OK).body(updatedScheduling);
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nenhum petshop encontrado com o ID: " + id);
+        }
+    }
+    
+    public ResponseEntity<Object> deleteScheduling(Long id) {
+        Optional<Scheduling> schedulingList = schedulingRepository.findById(id);
+        
+        if(schedulingList.isPresent()) {
+        	schedulingRepository.deleteById(id);
+            return ResponseEntity.status(HttpStatus.OK).body("Agendamento excluído com sucesso!");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nenhum agendamento encontrado com o ID " + id);
         }
     }
 	

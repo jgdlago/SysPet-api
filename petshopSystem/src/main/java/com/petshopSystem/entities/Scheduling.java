@@ -21,10 +21,6 @@ public class Scheduling {
 	
 	@ManyToOne
 	@JoinColumn(nullable = false)
-	private Customers customer;
-	
-	@ManyToOne
-	@JoinColumn(nullable = false)
 	private Petshop petshop;
 	
 	@Column(nullable = false, length = 10)
@@ -44,14 +40,6 @@ public class Scheduling {
 
 	public void setService(Services service) {
 		this.service = service;
-	}
-
-	public Customers getCustomer() {
-		return customer;
-	}
-
-	public void setCustomer(Customers customer) {
-		this.customer = customer;
 	}
 
 	public Petshop getPetshop() {
