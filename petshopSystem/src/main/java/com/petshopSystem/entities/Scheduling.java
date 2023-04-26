@@ -13,7 +13,7 @@ public class Scheduling {
 	
 	@ManyToOne
 	@JoinColumn(nullable = true)//@JoinColumn(nullable = false)
-	private Services service;
+	private ServicesType service;
 	
 	@ManyToOne
 	@JoinColumn(nullable = false)
@@ -34,11 +34,11 @@ public class Scheduling {
 		this.idscheduling = idscheduling;
 	}
 
-	public Services getService() {
+	public ServicesType getService() {
 		return service;
 	}
 
-	public void setService(Services service) {
+	public void setService(ServicesType service) {
 		this.service = service;
 	}
 

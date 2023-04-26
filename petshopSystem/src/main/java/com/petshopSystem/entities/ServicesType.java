@@ -1,11 +1,14 @@
 package com.petshopSystem.entities;
 
 import java.math.BigDecimal;
+
+import com.petshopSystem.Enums.ServiceTypeEnum;
+
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "service")
-public class Services {
+public class ServicesType {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,7 +24,8 @@ public class Services {
 	private boolean isChecked;
 	
 	@Column(nullable = false)
-	private String serviceType;
+	@Enumerated(EnumType.STRING)
+	private ServiceTypeEnum serviceType;
 
 	@ManyToOne
 	@JoinColumn(nullable = false)
@@ -59,11 +63,20 @@ public class Services {
 		this.isChecked = isChecked;
 	}
 
-	public String getServiceType() {
+	public ServiceTypeEnum getServiceType() {
 		return serviceType;
 	}
 
-	public void setServiceType(String serviceType) {
+	public void setServiceType(ServiceTypeEnum serviceType) {
 		this.serviceType = serviceType;
 	}
+
+	public Petshop getPetshop() {
+		return petshop;
+	}
+
+	public void setPetshop(Petshop petshop) {
+		this.petshop = petshop;
+	}
+
 }
