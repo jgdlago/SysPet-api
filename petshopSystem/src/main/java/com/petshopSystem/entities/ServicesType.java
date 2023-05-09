@@ -29,7 +29,15 @@ public class ServicesType {
 
 	@ManyToOne
 	@JoinColumn(nullable = false)
-	private Petshop petshop;
+	private Animals animal;
+
+	public Animals getAnimal() {
+		return animal;
+	}
+
+	public void setAnimal(Animals animal) {
+		this.animal = animal;
+	}
 
 	public Long getIdService() {
 		return idService;
@@ -69,14 +77,6 @@ public class ServicesType {
 
 	public void setServiceType(ServiceTypeEnum serviceType) {
 		this.serviceType = serviceType;
-	}
-
-	public Petshop getPetshop() {
-		return petshop;
-	}
-
-	public void setPetshop(Petshop petshop) {
-		this.petshop = petshop;
 	}
 
 }

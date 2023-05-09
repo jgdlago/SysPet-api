@@ -19,10 +19,6 @@ public class Scheduling {
 	@JoinColumn(nullable = false)
 	private Animals animal;
 	
-	@ManyToOne
-	@JoinColumn(nullable = false)
-	private Petshop petshop;
-	
 	@Column(nullable = false, length = 10)
 	private LocalDate date;
 
@@ -40,14 +36,6 @@ public class Scheduling {
 
 	public void setService(ServicesType service) {
 		this.service = service;
-	}
-
-	public Petshop getPetshop() {
-		return petshop;
-	}
-
-	public void setPetshop(Petshop petshop) {
-		this.petshop = petshop;
 	}
 
 	public LocalDate getDate() {
