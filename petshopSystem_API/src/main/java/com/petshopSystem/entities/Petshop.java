@@ -18,6 +18,12 @@ public class Petshop {
 	
     @Column(nullable = true, length = 15)
 	private String phone;
+    
+    @Column(unique = true, nullable = false, length = 15)
+    private String userName;
+    
+    @Column(nullable = false)
+    private String userPassword;
 
 	public Long getIdPetshop() {
 		return idPetshop;
@@ -49,6 +55,22 @@ public class Petshop {
 
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getUserPassword() {
+		return userPassword;
+	}
+
+	public void setUserPassword(String userPassword) {
+		this.userPassword = userPassword;
 	}
 
 }

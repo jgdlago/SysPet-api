@@ -20,8 +20,16 @@ public class PetshopService {
         return petShopRepository.findAll();
     }
     
-    public Petshop addPetshop(Petshop petshop) {
-        return petShopRepository.save(petshop);
+    public ResponseEntity<Object> addPetshop(Petshop petshop) {
+    	String userName = petshop.getUserName();
+    	String userPassword = petshop.getUserPassword();
+    	
+    	if (userName.matches(".*[^a-zA-Z0-9].*") || userName.contains(" ") || userPassword.contains(" ")) {
+    		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("userName ou userPassword inválidos");
+    	}
+    	
+        Petshop savedPetshop = petShopRepository.save(petshop);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedPetshop);
     }
     
     public ResponseEntity<?> getPetshopByName(String name) {
@@ -49,6 +57,8 @@ public class PetshopService {
 
         if(petshopOptional.isPresent()) {
             Petshop existingPetshop = petshopOptional.get();
+            
+            existingPetshop.setUserName(petshop.getUserName());
             existingPetshop.setName(petshop.getName());
             existingPetshop.setAddress(petshop.getAddress());
             existingPetshop.setPhone(petshop.getPhone());

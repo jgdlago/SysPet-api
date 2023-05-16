@@ -29,7 +29,7 @@ public class PetshopController {
     }
 
     @PostMapping
-    public Petshop addPetshop(@RequestBody Petshop petshop) {
+    public ResponseEntity<Object> addPetshop(@RequestBody Petshop petshop) {
     	return petshopService.addPetshop(petshop);
     }
     
