@@ -1,58 +1,26 @@
 package com.petshopSystem.controllers;
 
-import java.time.LocalDate;
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.petshopSystem.services.SchedulingService;
 import com.petshopSystem.entities.Scheduling;
+import com.petshopSystem.services.GenericService;
+import com.petshopSystem.services.SchedulingService;
 
 @RestController
-@RequestMapping("/scheduling")
-public class SchedulingController {
+@CrossOrigin(originPatterns = "*")
+@RequestMapping("/Scheduling")
+public class SchedulingController extends GenericController<Scheduling> {
 
-	@Autowired
-	private SchedulingService schedullingService;
+	private final SchedulingService schedulingService;
+	public SchedulingController(SchedulingService schedulingService) {
+		super();
+		this.schedulingService = schedulingService;
+	}
 	
-    @GetMapping
-    public List<Scheduling> getAllScheduling() {
-        return schedullingService.getAllScheduling();
-    }
-    
-    @PostMapping
-    public Scheduling addScheduling(@RequestBody Scheduling scheduling) {
-    	return schedullingService.addScheduling(scheduling);
-    }
-    
-    @GetMapping("/date/{date}")
-    public ResponseEntity<?> getSchedulingByDate(@PathVariable LocalDate date) {
-    	return schedullingService.getSchedulingByDate(date);
-    }
-    
-    @GetMapping("/id/{id}")
-    public ResponseEntity<Object> getSchedulingByid(@PathVariable Long id) {
-        return schedullingService.getSchedulingByid(id);
-    }
-    
-    @PutMapping("/id/{id}")
-    public ResponseEntity<Object> updateScheduling(@PathVariable Long id, @RequestBody Scheduling scheduling) {
-        return schedullingService.updateScheduling(id, scheduling);
-    }
-    
-    @DeleteMapping("/id/{id}")
-    public void deleteScheduling(@PathVariable Long id) {
-        schedullingService.deleteScheduling(id);
-    }
-    
-    
+	@Override
+	GenericService<Scheduling> getService() {
+		return schedulingService;
+	}
 }

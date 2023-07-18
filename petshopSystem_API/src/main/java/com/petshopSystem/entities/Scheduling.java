@@ -3,38 +3,27 @@ package com.petshopSystem.entities;
 import java.time.LocalDate;
 import jakarta.persistence.*;
 
+@SuppressWarnings("serial")
 @Entity
 @Table(name = "scheduling")
-public class Scheduling {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idscheduling;
+public class Scheduling extends GenericEntity {
 	
 	@ManyToOne
 	@JoinColumn(nullable = true)//@JoinColumn(nullable = false)
-	private ServicesType service;
+	private ServiceType service;
 	
 	@ManyToOne
 	@JoinColumn(nullable = false)
-	private Animals animal;
+	private Animal animal;
 	
 	@Column(nullable = false, length = 10)
 	private LocalDate date;
 
-	public Long getIdscheduling() {
-		return idscheduling;
-	}
-
-	public void setIdscheduling(Long idscheduling) {
-		this.idscheduling = idscheduling;
-	}
-
-	public ServicesType getService() {
+	public ServiceType getService() {
 		return service;
 	}
 
-	public void setService(ServicesType service) {
+	public void setService(ServiceType service) {
 		this.service = service;
 	}
 
@@ -46,11 +35,11 @@ public class Scheduling {
 		this.date = date;
 	}
 	
-	public Animals getAnimal() {
+	public Animal getAnimal() {
 		return animal;
 	}
 
-	public void setAnimal(Animals animal) {
+	public void setAnimal(Animal animal) {
 		this.animal = animal;
 	}
 	

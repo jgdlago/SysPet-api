@@ -1,9 +1,10 @@
 package com.petshopSystem.repositories;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-import com.petshopSystem.entities.ServicesType;
+import com.petshopSystem.entities.ServiceType;
 
-public interface ServiceTypeRepository extends JpaRepository<ServicesType, Long>{
+@Repository
+public interface ServiceTypeRepository extends GenericRepository<ServiceType>{
 
 }

@@ -3,13 +3,10 @@ package com.petshopSystem.entities;
 import jakarta.persistence.*;
 
 
+@SuppressWarnings("serial")
 @Entity
 @Table(name = "customers")
-public class Customers {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idCustomer;
+public class Customer extends GenericEntity {
 	
     @Column(nullable = false, length = 150)
 	private String name;
@@ -23,14 +20,6 @@ public class Customers {
     @ManyToOne
     @JoinColumn(nullable = false)
     private Petshop petshop;
-
-	public Long getIdCustomer() {
-		return idCustomer;
-	}
-
-	public void setIdCustomer(Long idCustomer) {
-		this.idCustomer = idCustomer;
-	}
 
 	public String getName() {
 		return name;

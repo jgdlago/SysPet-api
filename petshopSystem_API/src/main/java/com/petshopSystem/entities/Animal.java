@@ -2,13 +2,10 @@ package com.petshopSystem.entities;
 
 import jakarta.persistence.*;
 
+@SuppressWarnings("serial")
 @Entity
 @Table(name = "animal")
-public class Animals {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idAnimal;
+public class Animal extends GenericEntity {
 	
     @Column(nullable = false, length = 150)
 	private String name;
@@ -21,22 +18,14 @@ public class Animals {
     
     @ManyToOne
     @JoinColumn(nullable = false)
-    private Customers customer;
+    private Customer customer;
 
-	public Customers getCustomer() {
+	public Customer getCustomer() {
 		return customer;
 	}
 
-	public void setCustomer(Customers customer) {
+	public void setCustomer(Customer customer) {
 		this.customer = customer;
-	}
-
-	public Long getIdAnimal() {
-		return idAnimal;
-	}
-
-	public void setIdAnimal(Long idAnimal) {
-		this.idAnimal = idAnimal;
 	}
 
 	public String getName() {

@@ -2,13 +2,10 @@ package com.petshopSystem.entities;
 
 import jakarta.persistence.*;
 
+@SuppressWarnings("serial")
 @Entity
 @Table(name = "petshop")
-public class Petshop {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idPetshop;
+public class Petshop extends GenericEntity {
 	
     @Column(nullable = false, length = 150)
 	private String name;
@@ -24,14 +21,6 @@ public class Petshop {
     
     @Column(nullable = false)
     private String userPassword;
-
-	public Long getIdPetshop() {
-		return idPetshop;
-	}
-
-	public void setIdPetshop(Long idPetshop) {
-		this.idPetshop = idPetshop;
-	}
 
 	public String getName() {
 		return name;

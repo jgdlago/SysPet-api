@@ -6,13 +6,10 @@ import com.petshopSystem.Enums.ServiceTypeEnum;
 
 import jakarta.persistence.*;
 
+@SuppressWarnings("serial")
 @Entity
 @Table(name = "service")
-public class ServicesType {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idService;
+public class ServiceType extends GenericEntity {
 	
 	@Column(nullable = true, length = 200)
 	private String description;
@@ -29,22 +26,14 @@ public class ServicesType {
 
 	@ManyToOne
 	@JoinColumn(nullable = false)
-	private Animals animal;
+	private Animal animal;
 
-	public Animals getAnimal() {
+	public Animal getAnimal() {
 		return animal;
 	}
 
-	public void setAnimal(Animals animal) {
+	public void setAnimal(Animal animal) {
 		this.animal = animal;
-	}
-
-	public Long getIdService() {
-		return idService;
-	}
-
-	public void setIdService(Long idService) {
-		this.idService = idService;
 	}
 
 	public String getDescription() {
