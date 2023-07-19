@@ -30,7 +30,7 @@
     overflow: hidden;
     padding: 77px 55px 33px 55px;
 
-    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 10px 10px 15px 0px rgba(0, 0, 0, 0.3);
 }
 
 .register-form {
@@ -193,6 +193,7 @@
     font-size: 14px;
     color: #adadad;
     line-height: 1.5;
+    padding: 5px;
     text-decoration: none;
 }
 

@@ -22,7 +22,7 @@ function SignupForm() {
 
         <div className="container-register">
         <div className="wrap-register">
-        <span className="register-form-title">Cadastre seu Petshop</span>
+        <span className="register-form-title">Cadastre seu Petshop!</span>
 
           <form className="register-form">
 
@@ -37,7 +37,7 @@ function SignupForm() {
                 value={email}
                 onChange={e => setEmail(e.target.value)}
                 />
-              <span className="focus-input" data-placeholder="Email"></span>
+              <span className="focus-input" data-placeholder="E-mail"></span>
             </div>
 
             <div className="wrap-input">
@@ -47,7 +47,7 @@ function SignupForm() {
                 value={petshopName}
                 onChange={e => setPetshopName(e.target.value)}
                 />
-              <span className="focus-input" data-placeholder="Nome do PetShop"></span>
+              <span className="focus-input" data-placeholder="Nome do Petshop"></span>
             </div>
 
             <div className="wrap-input">

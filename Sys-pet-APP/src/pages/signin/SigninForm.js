@@ -34,7 +34,7 @@ function SigninForm() {
                 onChange={e => setEmail(e.target.value)}
                 />
 
-              <span className="focus-input" data-placeholder="Email"></span>
+              <span className="focus-input" data-placeholder="E-mail"></span>
             </div>
 
             <div className="wrap-input">
