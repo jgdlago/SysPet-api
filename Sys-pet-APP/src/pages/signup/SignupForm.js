@@ -4,6 +4,7 @@ import { useState } from 'react';
 import './signupStyle.css';
 import ErrorTooltip from '../../components/tooltips/ErrorTooltip';
 import { validateRegisterForm } from '../../utils/FormUtils';
+import { createPetshopForm } from '../../services/createPetshopService';
 
 function SignupForm() {
 
@@ -29,9 +30,8 @@ function SignupForm() {
         setTimeout(() => {
           setShowErrorTooltip(false);
         }, 5000);
-
       } else {
-        console.log('Formulário enviado!');
+        createPetshopForm(petshopName, email, phone, address);
       }
     };
 
