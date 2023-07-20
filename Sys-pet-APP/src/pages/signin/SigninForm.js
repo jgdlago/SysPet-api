@@ -1,11 +1,15 @@
 import petIcon from '../../assets/petIcon.png';
-import { useState } from 'react';
 import './signinStyle.css';
+import ErrorTooltip from '../../components/tooltips/ErrorTooltip';
+
+import { useState } from 'react';
+import { validateLoginForm } from '../../utils/FormUtils';
 
 function SigninForm() {
 
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [showErrorTooltip, setShowErrorTooltip] = useState(false);
 
     const handleScrollToBottom = () => {
       window.scrollTo({
@@ -14,18 +18,31 @@ function SigninForm() {
       });
     };
 
+    const handleFormSubmit = (e) => {
+      e.preventDefault();
+  
+      if (!validateLoginForm(email, password)) {
+        setShowErrorTooltip(true);
+        setTimeout(() => {
+          setShowErrorTooltip(false);
+        }, 5000);
+
+      } else {
+        console.log('Formulário enviado!');
+      }
+    };
+
     return (
 
-        <div className="container-login">
+      <div className="container-login">
         <div className="wrap-login">
-          <form className="login-form">
-            <span className="login-form-title">Bem Vindo!</span>
+          <form onSubmit={handleFormSubmit} className="login-form">
 
+            <span className="login-form-title">Bem Vindo!</span>
             <span className="login-form-title">
               <img src={petIcon} alt="SysPET" />
             </span>
             
-
             <div className="wrap-input">
               <input 
                 className={email !== "" ? 'has-val input' : 'input'} 
@@ -33,7 +50,6 @@ function SigninForm() {
                 value={email}
                 onChange={e => setEmail(e.target.value)}
                 />
-
               <span className="focus-input" data-placeholder="E-mail"></span>
             </div>
 
@@ -44,13 +60,14 @@ function SigninForm() {
                 value={password}
                 onChange={e => setPassword(e.target.value)}
                 />
-
               <span className="focus-input" data-placeholder="Senha"></span>
             </div>
 
             <div className="container-login-form-btn">
-              <button className="login-form-btn">Login</button>
+              <button type="submit" className="login-form-btn">Login</button>
             </div>
+
+            <ErrorTooltip message={'Preencha os dados de login'} show={showErrorTooltip} />
 
             <div className='text-center-login'>
               <span className='text-login1'>Não possui conta?</span>
