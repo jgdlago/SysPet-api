@@ -1,6 +1,6 @@
 import React from 'react';
 
-const GenericAlertMessage = ({ message1, message2, onClick }) => {
+const GenericMessage = ({ message1, message2, onClick }) => {
   return (
     <div className='text-center-generic'>
       <span className='text-generic1'>{message1}</span>
@@ -9,4 +9,4 @@ const GenericAlertMessage = ({ message1, message2, onClick }) => {
   );
 };
 
-export default GenericAlertMessage;
+export default GenericMessage;

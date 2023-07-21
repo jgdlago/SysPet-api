@@ -8,7 +8,7 @@ import { createPetshopForm } from '../../services/createPetshopService';
 import Loading from '../../components/loading/Loading';
 import InputForm from '../../components/input/InputForm'
 import GenericFormButton from '../../components/button/GenericFormButton';
-import GenericAlertMessage from '../../components/message/GenericAlertMessage';
+import GenericAlertMessage from '../../components/message/GenericMessage';
 
 function SignupForm() {
 

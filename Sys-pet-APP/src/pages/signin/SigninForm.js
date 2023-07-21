@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { validateLoginForm } from '../../utils/FormUtils';
 import InputForm from '../../components/input/InputForm';
 import GenericFormButton from '../../components/button/GenericFormButton';
-import GenericAlertMessage from '../../components/message/GenericAlertMessage';
+import GenericAlertMessage from '../../components/message/GenericMessage';
 
 function SigninForm() {
 
