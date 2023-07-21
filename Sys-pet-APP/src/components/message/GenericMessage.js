@@ -1,4 +1,5 @@
 import React from 'react';
+import './genericMessage.css';
 
 const GenericMessage = ({ message1, message2, onClick }) => {
   return (
