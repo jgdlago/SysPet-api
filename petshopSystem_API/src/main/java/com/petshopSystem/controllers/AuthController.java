@@ -42,7 +42,6 @@ public class AuthController {
 		this.emailServiceImple = emailServiceImple;
 	}
 	
-// Login
 	@PostMapping("/signin")
 	public ResponseEntity<Object> signin(@RequestBody SigninPayload login) {
 		try {
@@ -56,7 +55,6 @@ public class AuthController {
 		}
 	}
 	
-// 	Cadastro
 	@PostMapping("/signup")
 	public ResponseEntity<Object> signup(@RequestBody SignupPayload signup) {
 		try {
@@ -79,7 +77,6 @@ public class AuthController {
 		}	
 	}
 	
-// Gerador de senha
 	private String randomPassword(int size) {
 		String ALLOWED_CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_-+=";
 		SecureRandom random = new SecureRandom();

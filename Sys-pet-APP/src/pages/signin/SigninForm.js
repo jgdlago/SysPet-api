@@ -1,9 +1,9 @@
 import petIcon from '../../assets/petIcon.png';
 import './signinStyle.css';
 import ErrorTooltip from '../../components/tooltips/ErrorTooltip';
-
 import { useState } from 'react';
 import { validateLoginForm } from '../../utils/FormUtils';
+import InputForm from '../../components/input/InputForm';
 
 function SigninForm() {
 
@@ -34,44 +34,28 @@ function SigninForm() {
 
     return (
 
-      <div className="container-login">
+      <div className="container-genericForm">
         <div className="wrap-login">
-          <form onSubmit={handleFormSubmit} className="login-form">
+          <form onSubmit={handleFormSubmit} className="generic-form">
 
-            <span className="login-form-title">Bem Vindo!</span>
-            <span className="login-form-title">
+            <span className="generic-form-title">Bem Vindo!</span>
+            <span className="generic-form-title">
               <img src={petIcon} alt="SysPET" />
             </span>
             
-            <div className="wrap-input">
-              <input 
-                className={email !== "" ? 'has-val input' : 'input'} 
-                type="email" 
-                value={email}
-                onChange={e => setEmail(e.target.value)}
-                />
-              <span className="focus-input" data-placeholder="E-mail"></span>
-            </div>
+            <InputForm type="email" value={email} onChange={setEmail} placeholder="E-mail" />
 
-            <div className="wrap-input">
-              <input 
-                className={password !== "" ? 'has-val input' : 'input'} 
-                type="password" 
-                value={password}
-                onChange={e => setPassword(e.target.value)}
-                />
-              <span className="focus-input" data-placeholder="Senha"></span>
-            </div>
+            <InputForm type="password" value={password} onChange={setPassword} placeholder="Senha" />
 
-            <div className="container-login-form-btn">
-              <button type="submit" className="login-form-btn">Login</button>
+            <div className="container-generic-form-btn">
+              <button type="submit" className="generic-form-btn">Login</button>
             </div>
 
             <ErrorTooltip message={'Preencha os dados de login'} show={showErrorTooltip} />
 
-            <div className='text-center-login'>
-              <span className='text-login1'>Não possui conta?</span>
-              <a className="text-login2" onClick={handleScrollToBottom}>Criar conta</a>
+            <div className='text-center-generic'>
+              <span className='text-generic1'>Não possui conta?</span>
+              <a className="text-generic2" onClick={handleScrollToBottom}>Criar conta</a>
             </div>
 
           </form>

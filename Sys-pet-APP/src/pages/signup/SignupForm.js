@@ -1,10 +1,12 @@
 import petIcon from '../../assets/petIcon.png';
 import { useState } from 'react';
-
 import './signupStyle.css';
+import '../genericStyles/genericFormStyle.css'
 import ErrorTooltip from '../../components/tooltips/ErrorTooltip';
 import { validateRegisterForm } from '../../utils/FormUtils';
 import { createPetshopForm } from '../../services/createPetshopService';
+import Loading from '../../components/loading/Loading';
+import InputForm from '../../components/input/InputForm'
 
 function SignupForm() {
 
@@ -14,6 +16,7 @@ function SignupForm() {
     const [address, setAdress] = useState("")
     const [phone, setPhone] = useState("")
     const [showErrorTooltip, setShowErrorTooltip] = useState(false);
+    const [showLoading, setShowLoading] = useState(false);
 
     const handleScrollToTop = () => {
       window.scrollTo({
@@ -24,80 +27,50 @@ function SignupForm() {
 
     const handleFormSubmit = (e) => {
       e.preventDefault();
-  
+
       if (!validateRegisterForm(email, petshopName, address, phone)) {
         setShowErrorTooltip(true);
         setTimeout(() => {
           setShowErrorTooltip(false);
         }, 5000);
       } else {
+        setShowLoading(true);
         createPetshopForm(petshopName, email, phone, address);
       }
     };
 
     return (
 
-        <div className="container-register">
+        <div className="container-genericForm">
         <div className="wrap-register">
-          <form onSubmit={handleFormSubmit} className="register-form">
+          <form onSubmit={handleFormSubmit} className="generic-form">
 
-            <span className="register-form-title">Cadastre seu Petshop!</span>  
-            <span className="register-form-title">
+            <span className="generic-form-title">Cadastre seu Petshop!</span>  
+            <span className="generic-form-title">
               <img src={petIcon} alt="SysPET" />
             </span>
 
-            <div className="wrap-input">
-              <input 
-                className={email !== "" ? 'has-val input' : 'input'} 
-                type="email" 
-                value={email}
-                onChange={e => setEmail(e.target.value)}
-                />
-              <span className="focus-input" data-placeholder="E-mail"></span>
-            </div>
+            <InputForm type="email" value={email} onChange={setEmail} placeholder="E-mail" />
 
-            <div className="wrap-input">
-              <input 
-                className={petshopName !== "" ? 'has-val input' : 'input'} 
-                type="text" 
-                value={petshopName}
-                onChange={e => setPetshopName(e.target.value)}
-                />
-              <span className="focus-input" data-placeholder="Nome do Petshop"></span>
-            </div>
+            <InputForm type="text" value={petshopName} onChange={setPetshopName} placeholder="Nome do Petshop" />
 
-            <div className="wrap-input">
-              <input 
-                className={address !== "" ? 'has-val input' : 'input'} 
-                type="text" 
-                value={address}
-                onChange={e => setAdress(e.target.value)}
-                />
-              <span className="focus-input" data-placeholder="Endereço"></span>
-            </div>
+            <InputForm type="text" value={address} onChange={setAdress} placeholder="Endereço" />
 
-            <div className="wrap-input">
-              <input 
-                className={phone !== "" ? 'has-val input' : 'input'} 
-                type="tel" 
-                value={phone}
-                onChange={e => setPhone(e.target.value)}
-                />
-              <span className="focus-input" data-placeholder="Telefone (WhatsApp)"></span>
-            </div>
+            <InputForm type="tel" value={phone} onChange={setPhone} placeholder="Telefone (WhatsApp)" />
 
-            <div className="container-register-form-btn">
-              <button type="submit" className="register-form-btn">Cadastrar</button>
+            <div className="container-generic-form-btn">
+              <button type="submit" className="generic-form-btn">Cadastrar</button>
             </div>
 
             <ErrorTooltip message={'Preencha os dados de login'} show={showErrorTooltip} />
 
-            <div className='text-center-register'>
-              <span className='text-register1'>Já possui conta?</span>
-              <a className="text-register2" onClick={handleScrollToTop}>Logar</a>
+            <div className='text-center-generic'>
+              <span className='text-generic1'>Já possui conta?</span>
+              <a className="text-generic2" onClick={handleScrollToTop}>Logar</a>
             </div>
 
           </form>
+          { showLoading && <Loading /> }
         </div>
       </div>
 
