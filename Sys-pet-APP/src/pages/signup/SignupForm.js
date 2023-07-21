@@ -7,6 +7,8 @@ import { validateRegisterForm } from '../../utils/FormUtils';
 import { createPetshopForm } from '../../services/createPetshopService';
 import Loading from '../../components/loading/Loading';
 import InputForm from '../../components/input/InputForm'
+import GenericFormButton from '../../components/button/GenericFormButton';
+import GenericAlertMessage from '../../components/message/GenericAlertMessage';
 
 function SignupForm() {
 
@@ -58,16 +60,11 @@ function SignupForm() {
 
             <InputForm type="tel" value={phone} onChange={setPhone} placeholder="Telefone (WhatsApp)" />
 
-            <div className="container-generic-form-btn">
-              <button type="submit" className="generic-form-btn">Cadastrar</button>
-            </div>
+            <GenericFormButton text="Cadastrar" onClick={handleFormSubmit} />
 
             <ErrorTooltip message={'Preencha os dados de login'} show={showErrorTooltip} />
 
-            <div className='text-center-generic'>
-              <span className='text-generic1'>Já possui conta?</span>
-              <a className="text-generic2" onClick={handleScrollToTop}>Logar</a>
-            </div>
+            <GenericAlertMessage message1="Já possui conta?" message2="Logar" onClick={handleScrollToTop} />
 
           </form>
           { showLoading && <Loading /> }

@@ -4,6 +4,8 @@ import ErrorTooltip from '../../components/tooltips/ErrorTooltip';
 import { useState } from 'react';
 import { validateLoginForm } from '../../utils/FormUtils';
 import InputForm from '../../components/input/InputForm';
+import GenericFormButton from '../../components/button/GenericFormButton';
+import GenericAlertMessage from '../../components/message/GenericAlertMessage';
 
 function SigninForm() {
 
@@ -47,16 +49,11 @@ function SigninForm() {
 
             <InputForm type="password" value={password} onChange={setPassword} placeholder="Senha" />
 
-            <div className="container-generic-form-btn">
-              <button type="submit" className="generic-form-btn">Login</button>
-            </div>
+            <GenericFormButton text="Login" onClick={handleFormSubmit} />
 
             <ErrorTooltip message={'Preencha os dados de login'} show={showErrorTooltip} />
 
-            <div className='text-center-generic'>
-              <span className='text-generic1'>Não possui conta?</span>
-              <a className="text-generic2" onClick={handleScrollToBottom}>Criar conta</a>
-            </div>
+            <GenericAlertMessage message1="Deseja criar uma conta?" message2="Cadastrar" onClick={handleScrollToBottom} />
 
           </form>
         </div>
