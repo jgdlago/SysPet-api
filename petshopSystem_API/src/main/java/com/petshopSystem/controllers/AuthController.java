@@ -19,6 +19,7 @@ import com.petshopSystem.configs.JwtUtils;
 import com.petshopSystem.controllers.payloads.SigninPayload;
 import com.petshopSystem.controllers.payloads.SignupPayload;
 import com.petshopSystem.entities.Petshop;
+import com.petshopSystem.serviceImple.EmailServiceImple;
 import com.petshopSystem.services.PetshopService;
 
 @RestController
@@ -30,12 +31,15 @@ public class AuthController {
 	private final JwtUtils jwtUtils;
 	private final PetshopService petshopService;
 	private final PasswordEncoder passwordEncoder;
-	public AuthController(AuthenticationManager authenticationManager, JwtUtils jwtUtils, PetshopService petshopService, PasswordEncoder passwordEncoder) {
+	private final EmailServiceImple emailServiceImple;
+	public AuthController(AuthenticationManager authenticationManager, JwtUtils jwtUtils, PetshopService petshopService,
+			PasswordEncoder passwordEncoder, EmailServiceImple emailServiceImple) {
 		super();
 		this.authenticationManager = authenticationManager;
 		this.jwtUtils = jwtUtils;
 		this.petshopService = petshopService;
 		this.passwordEncoder = passwordEncoder;
+		this.emailServiceImple = emailServiceImple;
 	}
 	
 // Login
@@ -52,7 +56,7 @@ public class AuthController {
 		}
 	}
 	
-// Cadastro
+// 	Cadastro
 	@PostMapping("/signup")
 	public ResponseEntity<Object> signup(@RequestBody SignupPayload signup) {
 		try {
@@ -66,6 +70,9 @@ public class AuthController {
 			newPetshop.setPassword(passwordEncoder.encode(randomPassword));
 			
 			petshopService.save(newPetshop);
+			
+			emailServiceImple.emailGenerator(signup.getEmail(), randomPassword);
+			
 			return ResponseEntity.status(HttpStatus.OK).body(randomPassword);
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
