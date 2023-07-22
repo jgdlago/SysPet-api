@@ -13,7 +13,6 @@ import GenericAlertMessage from '../../components/message/GenericMessage';
 function SignupForm() {
 
     const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
     const [petshopName, setPetshopName] = useState("")
     const [address, setAdress] = useState("")
     const [phone, setPhone] = useState("")
