@@ -1,0 +1,13 @@
+:root {
+    --color-base: #6f95ff;
+    --color-contrast: #ff8a00;
+    --color-base-dark: #324d99;
+    --color-dark: #333;
+    --background-blue-gradient: linear-gradient(to left, --color-base, --color-base-dark);
+}
+
+.homePage-container {
+    background-color: var(--color-base-dark);
+    width: 100%;
+    height: 100vh;
+}

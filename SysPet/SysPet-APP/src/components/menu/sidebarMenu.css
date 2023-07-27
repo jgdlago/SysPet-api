@@ -1,0 +1,45 @@
+:root {
+    --color-base: #6f95ff;
+    --color-contrast: #ff8a00;
+    --color-base-dark: #324d99;
+    --color-dark: #333;
+    --background-blue-gradient: linear-gradient(to left, --color-base, --color-base-dark);
+  }
+  
+.sidebarMenu-container {
+    background-color: var(--color-dark);
+    width: 20%;
+    height: 100vh;
+    text-align: center;
+    padding: 20px;
+}
+
+.petLogo {
+    width: 100px;
+}
+
+.sidebarMenu-list {
+    margin-top: 10px;
+    max-height: calc(100% - 100px);
+    overflow-y: auto;
+}
+
+.sidebarMenu-list ul {
+    padding: 0;
+}
+
+.sidebarMenu-list ul li {
+    list-style: none;
+    padding: 20px;
+    font-size: 22px;
+    color: white;
+    cursor: pointer;
+}
+
+.sidebarMenu-list li:hover {
+    color: var(--color-base);
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+}
+

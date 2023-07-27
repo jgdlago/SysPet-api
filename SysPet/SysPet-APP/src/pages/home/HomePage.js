@@ -1,8 +1,11 @@
+import SidebarMenu from '../../components/menu/SidebarMenu';
+import '../../styles.css'
+import './homePage.css'
 
 function HomePage() {
   return (
-    <div className="container">
-      <span>HOME</span>
+    <div className="homePage-container">
+      <SidebarMenu />
     </div>
   );
 }
