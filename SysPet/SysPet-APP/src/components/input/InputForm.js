@@ -9,7 +9,8 @@ const InputForm = ({ type, value, onChange, placeholder, onlyNumbers }) => {
       inputValue = inputValue.replace(/^(\d{2})(\d{0,5})(\d{0,4}).*/, '($1) $2-$3');
     }
 
-    if (inputValue.length <= 15) {
+    const maxLength = onlyNumbers ? 15 : 100;
+    if (inputValue.length <= maxLength) {
       onChange(inputValue);
     }
   };

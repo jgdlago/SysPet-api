@@ -6,6 +6,7 @@ import { validateLoginForm } from '../../utils/FormUtils';
 import InputForm from '../../components/input/InputForm';
 import GenericFormButton from '../../components/button/GenericFormButton';
 import GenericAlertMessage from '../../components/message/GenericMessage';
+import { login } from '../../services/loginService';
 
 function SigninForm() {
 
@@ -30,6 +31,7 @@ function SigninForm() {
         }, 5000);
 
       } else {
+        login(email, password);
         console.log('Formulário enviado!');
       }
     };
