@@ -6,12 +6,13 @@
     --background-blue-gradient: linear-gradient(to left, --color-base, --color-base-dark);
   }
   
-.sidebarMenu-container {
+  .sidebarMenu-container {
     background-color: var(--color-dark);
     width: 20%;
     height: 100vh;
     text-align: center;
     padding: 20px;
+    position: relative;
 }
 
 .petLogo {
@@ -43,3 +44,22 @@
     -moz-transition: all 0.4s;
 }
 
+.menuIcon {
+    font-size: 16px;
+}
+
+.quitIcon {
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.quitIcon:hover {
+    color: var(--color-base);
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+}
