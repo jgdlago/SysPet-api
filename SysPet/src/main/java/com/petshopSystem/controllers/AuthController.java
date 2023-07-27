@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.petshopSystem.configs.JwtUtils;
 import com.petshopSystem.controllers.payloads.SigninPayload;
 import com.petshopSystem.controllers.payloads.SignupPayload;
+import com.petshopSystem.controllers.payloads.TokenPayload;
 import com.petshopSystem.entities.Petshop;
 import com.petshopSystem.serviceImple.EmailServiceImple;
 import com.petshopSystem.services.PetshopService;
@@ -76,6 +77,16 @@ public class AuthController {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
 		}	
 	}
+	
+	@PostMapping("/validateToken")
+	public ResponseEntity<Boolean> validateJwtToken(@RequestBody TokenPayload request) {
+	    try {
+	        return ResponseEntity.status(HttpStatus.OK).body(jwtUtils.validateJwtToken(request.getToken()));
+	    } catch (Exception e) {
+	        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(false);
+	    }
+	}
+
 	
 	private String randomPassword(int size) {
 		String ALLOWED_CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_-+=";
