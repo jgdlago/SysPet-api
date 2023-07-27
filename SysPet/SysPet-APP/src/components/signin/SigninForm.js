@@ -7,12 +7,14 @@ import InputForm from '../../components/input/InputForm';
 import GenericFormButton from '../../components/button/GenericFormButton';
 import GenericAlertMessage from '../../components/message/GenericMessage';
 import { login } from '../../services/loginService';
+import Loading from '../loading/Loading';
 
 function SigninForm() {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [showErrorTooltip, setShowErrorTooltip] = useState(false);
+    const [showLoading, setShowLoading] = useState(false);
 
     const handleScrollToBottom = () => {
       window.scrollTo({
@@ -23,7 +25,7 @@ function SigninForm() {
 
     const handleFormSubmit = (e) => {
       e.preventDefault();
-  
+      
       if (!validateLoginForm(email, password)) {
         setShowErrorTooltip(true);
         setTimeout(() => {
@@ -31,8 +33,8 @@ function SigninForm() {
         }, 5000);
 
       } else {
+        setShowLoading(true);
         login(email, password);
-        console.log('Formulário enviado!');
       }
     };
 
@@ -58,6 +60,7 @@ function SigninForm() {
             <GenericAlertMessage message1="Deseja criar uma conta?" message2="Cadastrar" onClick={handleScrollToBottom} />
 
           </form>
+          { showLoading && <Loading /> }
         </div>
       </div>
 

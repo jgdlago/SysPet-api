@@ -9,10 +9,10 @@ export const login = async (email, password) => {
   
     try {
         const response = await axios.post('http://localhost:8080/auth/signin', userData);
-        const { token } = response.data;
+        const token = response.data;
 
         setAuthToken(token);
-      console.log('Usuário logado: ', response.data);
+        window.location.reload();
       
     } catch (error) {
         console.error('Erro ao logar: ', error);
