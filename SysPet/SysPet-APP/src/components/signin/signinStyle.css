@@ -1,10 +1,11 @@
 :root {
-    --color-base: #6f95ff;
-    --color-contrast: #ff8a00;
-    --color-base-dark: #324d99;
-    --color-dark: #333;
-    --background-blue-gradient: linear-gradient(to left, --color-base, --color-base-dark);
-  }
+  --color-base: #6f95ff;
+  --color-contrast: #ff8a00;
+  --color-base-dark: #324d99;
+  --color-dark: #333;
+  --background-blue-gradient: linear-gradient(to left, var(--color-base), var(--color-base-dark));
+  --shadow-black-default: 10px 10px 15px 0px rgba(0, 0, 0, 0.3);
+}
 
 .wrap-login {
     width: 390px;
@@ -12,6 +13,6 @@
     border-radius: 10px;
     overflow: hidden;
     padding: 77px 55px 33px 55px;
-    box-shadow: 10px 10px 15px 0px rgba(0, 0, 0, 0.3)
+    box-shadow: var(--shadow-black-default);
 }
 

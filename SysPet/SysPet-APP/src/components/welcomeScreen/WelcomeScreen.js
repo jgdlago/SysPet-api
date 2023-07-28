@@ -1,7 +1,9 @@
 
 function WelcomeScreen() {
   return (
-    <span>Bem vindo</span>
+    <div className="welcome-container" >
+      
+    </div>
   );
 }
 
