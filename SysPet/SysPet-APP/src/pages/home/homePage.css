@@ -10,4 +10,25 @@
     background-color: var(--color-base-dark);
     width: 100%;
     height: 100vh;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    overflow: hidden;
 }
+  
+.content-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 75%;
+    margin: 50px;
+}
+  
+.menu-open {
+    margin-left: -20%;
+}
+  

@@ -1,0 +1,17 @@
+.welcome-container {
+    color: white;
+    font-size: 18px;
+}
+
+.welcome-container h1, h2 {
+    line-height: 2;
+}
+
+.welcome-container p {
+    line-height: 1.5;
+}
+
+.welcome-container li {
+    list-style: none;
+}
+
