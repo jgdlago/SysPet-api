@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
 import axios from 'axios';
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import AuthPage from '../pages/auth/AuthPage';
 import HomePage from '../pages/home/HomePage';
+import MyPetshop from '../components/myPetshop/MyPetshop';
 
 const isAuthenticated = async () => {
   const token = Cookies.get('token');
@@ -38,7 +39,13 @@ const AppRouter = () => {
     <Router>
       <Routes>
         {!isUserAuthenticated && <Route path="/*" element={<AuthPage />} />}
-        {isUserAuthenticated && <Route path="/*" element={<HomePage />} />}
+        {isUserAuthenticated && (
+          <Route path="/*" element={
+            <HomePage>
+               <MyPetshop/>{/* Componente a ser exibido */}
+            </HomePage>
+          } />
+        )}
       </Routes>
     </Router>
   );

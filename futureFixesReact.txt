@@ -1,0 +1,6 @@
+Futuros ajustes:
+
+1. Div de menu
+	Tamanho da div de menu está influenciando no alinhamento 
+	da div de conteúdo, foi adicionada uma 'margin-left: -20%;'
+	para correção temporária.
