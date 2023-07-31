@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import './myPetshop.css';
+import InputInfo from '../input/InputInfo';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
+
 
 function MyPetshop() {
   // Exemplo de informações do petshop (pode ser obtido de uma API ou estado)
@@ -15,16 +19,22 @@ function MyPetshop() {
 
   return (
     <div className="myPetshop-container">
-      <div className="petshopInfo">
-        <h1>NOME DO PETSHOP</h1>
-        <div className="petshopInfo-input">
 
-        {/* Desenvolver componente que receba valor do campo
-            e isEditing caso não seja editável mostrar apenas span 
-            com a info, caso seja mostra input que recebe nova informação */}
-
-        </div>
+      <div className="myPetshop-header">
+        <h1>{petshopInfo.nome}</h1>
       </div>
+
+      <div className="myPetshop-infos">
+
+        <InputInfo className="myPetshop-input" title="Nome" value={petshopInfo.nome} isEditing={isEditing} />
+        <InputInfo className="myPetshop-input" title="Endereço" value={petshopInfo.endereco} isEditing={isEditing} />
+        <InputInfo className="myPetshop-input" title="Telefone" value={petshopInfo.telefone} isEditing={isEditing} />
+        <InputInfo className="myPetshop-input" title="E-mail" value={petshopInfo.email} isEditing={isEditing} />
+
+        <span className="editIcont" onClick={() => setIsEditing(!isEditing)}> <FontAwesomeIcon icon={faPenToSquare} /> Editar informações </span>
+
+      </div>
+
     </div>
   );
 }

@@ -8,15 +8,42 @@
 
 .myPetshop-container {
     color: white;
-    background-color: var(--color-dark);
-    width: 700px;
-    border-radius: 10px;
+    width: 90%;
     overflow: hidden;
-    padding: 50px;
-    box-shadow: var(--shadow-black-default);
+    position: fixed;
+    top: 0;
 }
 
-.petshopInfo h1{
+.myPetshop-header {
+    background-color: var(--color-dark);
+    border-radius: 15px;
+    /* box-shadow: var(--shadow-black-default); */
+    height: 100px;
     text-align: center;
-    line-height: 3;
+}
+
+.myPetshop-header h1 {
+    padding-top: 20px;
+}
+
+.myPetshop-infos {
+    background-color: var(--color-dark);
+    margin-top: 50px;
+    border-radius: 15px;
+    padding: 15px;
+    text-align: center;
+    font-size: 22px;
+}
+
+.editIcont {
+    color: white;
+    font-size: 16px;
+}
+
+.editIcont:hover {
+    color: var(--color-base);
+    cursor: pointer;
+    -webkit-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    -moz-transition: all 0.2s;
 }
