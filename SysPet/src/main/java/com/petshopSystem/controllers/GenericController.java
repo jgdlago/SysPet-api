@@ -19,7 +19,6 @@ public abstract class GenericController<TEntidade extends GenericEntity> {
 	
 	abstract GenericService<TEntidade> getService();
 
-//	Salvar
 	@PostMapping
 	public ResponseEntity<Object> save(@RequestBody TEntidade entidade) {
 		try {
@@ -30,7 +29,6 @@ public abstract class GenericController<TEntidade extends GenericEntity> {
 		}
 	}
 	
-//	Busca por id
 	@GetMapping("/{id}")
 	public ResponseEntity<Object> findById(@PathVariable long id) {
 		try {
@@ -44,7 +42,6 @@ public abstract class GenericController<TEntidade extends GenericEntity> {
 		}
 	}
 	
-//	Busca todos
 	@GetMapping
 	public ResponseEntity<Object> findAll() {
 		try {
@@ -55,7 +52,6 @@ public abstract class GenericController<TEntidade extends GenericEntity> {
 		}
 	}
 	
-//	Atualiza info
 	@PutMapping("/{id}")
 	public ResponseEntity<Object> saveUpdate(@PathVariable long id, @RequestBody TEntidade entidade) {
 		try {
@@ -67,7 +63,6 @@ public abstract class GenericController<TEntidade extends GenericEntity> {
 		}
 	}
 	
-//	Deleta por ID
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Object> delete(@PathVariable long id) {
 		try {			

@@ -4,3 +4,6 @@ Futuros ajustes:
 	Tamanho da div de menu está influenciando no alinhamento 
 	da div de conteúdo, foi adicionada uma 'margin-left: -20%;'
 	para correção temporária.
+
+
+2. Requisição para informação básica do petshop não está incluindo o token no cabecalho

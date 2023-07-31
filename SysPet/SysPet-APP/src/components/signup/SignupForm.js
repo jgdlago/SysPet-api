@@ -4,7 +4,7 @@ import './signupStyle.css';
 import '../genericStyles/genericFormStyle.css'
 import ErrorTooltip from '../../components/tooltips/ErrorTooltip';
 import { validateRegisterForm } from '../../utils/FormUtils';
-import { createPetshopForm } from '../../services/createPetshopService';
+import { createPetshopForm } from '../../services/petshopService';
 import Loading from '../../components/loading/Loading';
 import InputForm from '../../components/input/InputForm'
 import GenericFormButton from '../../components/button/GenericFormButton';

@@ -6,7 +6,7 @@ import { validateLoginForm } from '../../utils/FormUtils';
 import InputForm from '../../components/input/InputForm';
 import GenericFormButton from '../../components/button/GenericFormButton';
 import GenericAlertMessage from '../../components/message/GenericMessage';
-import { login } from '../../services/loginService';
+import { login, getBasicPetshopInfo} from '../../services/loginService';
 import Loading from '../loading/Loading';
 
 function SigninForm() {
@@ -35,6 +35,7 @@ function SigninForm() {
       } else {
         setShowLoading(true);
         login(email, password);
+        getBasicPetshopInfo(email);
       }
     };
 

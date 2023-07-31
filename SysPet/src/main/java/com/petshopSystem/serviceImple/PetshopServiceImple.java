@@ -4,6 +4,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import com.petshopSystem.dataTransferObject.BasicPetshopInfoDTO;
 import com.petshopSystem.entities.Petshop;
 import com.petshopSystem.repositories.GenericRepository;
 import com.petshopSystem.repositories.PetShopRepository;
@@ -32,5 +33,24 @@ public class PetshopServiceImple implements PetshopService {
 			.orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado"));
 	    return petshop;
 	}
+
+	@Override
+	public BasicPetshopInfoDTO getBasicPetshopInfo(String email) throws Exception {
+	    try {
+	        Petshop petshop = this.petShopRepository.findByEmail(email)
+	                .orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado"));
+	        
+	        BasicPetshopInfoDTO basicInfo = new BasicPetshopInfoDTO();
+	        basicInfo.setId(petshop.getId());
+	        basicInfo.setName(petshop.getName());
+	        basicInfo.setEmail(petshop.getEmail());
+	        
+	        return basicInfo;
+	    } catch (Exception e) {
+	        throw new Exception("Erro ao obter informações do petshop.", e);
+	    }
+	}
+
+	
 
 }
